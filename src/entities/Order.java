@@ -54,14 +54,6 @@ public class Order {
         return value;
     }
 
-    public static void showList(List<Order> list){
-        System.out.println();
-        System.out.println("Lista de pedidos: ");
-        for (Order x : list){
-            System.out.println(x);
-        }
-    }
-
     @Override
     public String toString(){
         SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyy HH:mm:ss");
