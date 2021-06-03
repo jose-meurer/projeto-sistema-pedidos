@@ -30,7 +30,6 @@ public class Program {
                 System.out.print("Nome do cliente: ");
                 sc.nextLine();
                 String name = sc.nextLine().toUpperCase();
-
                 System.out.print("Valor do pedido: ");
                 Double price = sc.nextDouble();
 
@@ -39,7 +38,6 @@ public class Program {
                 System.out.printf("Pagamento pendente [1], %nProcessando [2], %nEnviado [3], %nEntregue [4] %n");
                 System.out.print("Selecione o numero que corresponde ao estado do pedido: ");
                 int status = sc.nextInt();
-
                 OrderStatus orderStatus = Program.statusOrder(status);
 
                 list.add(new Order(id, name, price, date, orderStatus));
@@ -51,7 +49,8 @@ public class Program {
             char reply = sc.next().charAt(0);
             if (reply == 's' || reply == 'S') {
                 n = 1;
-            } else {
+            }
+            else {
                 n = null;
             }
         } while (n != null);
@@ -61,7 +60,6 @@ public class Program {
         System.out.println();
         System.out.print("Deseja alterar os dados de um pedido? s/n ");
         char changeStatus = sc.next().charAt(0);
-
         do {
             if (changeStatus == 's' || changeStatus == 'S') {
                 System.out.print("Digite o id do pedido: ");
@@ -73,9 +71,8 @@ public class Program {
 
                 int buscaId = id;
                 Order order = list.stream().filter(x -> x.getId() == buscaId).findFirst().orElse(null); //Erro ao usar a variavel id anterior
-                System.out.printf("Qual campo deseja alterar? %nName [1], %nValor [2], %nStatus [3] %nSelecione o numero correspondente: ");
+                System.out.printf("Qual campo deseja alterar? %nName [1], %nValor [2], %nStatus [3], %nRemover pedido [4] %nSelecione o numero correspondente: ");
                 int numberChangeStatus = sc.nextInt();
-
                 switch (numberChangeStatus) {
                     case 1:
                         System.out.print("Novo nome: ");
@@ -93,6 +90,10 @@ public class Program {
                         System.out.print("Novo status: ");
                         int status = sc.nextInt();
                         order.setStatus(Program.statusOrder(status));
+                        break;
+                    case 4:
+                        System.out.println("Pedido com id: " + order.getId() + " removido");
+                        list.remove(order);
                         break;
                     default:
                         System.out.println("Valor invalido");
@@ -129,7 +130,6 @@ public class Program {
     private static OrderStatus statusOrder(int status) {
         Scanner sc = new Scanner(System.in);
         OrderStatus orderStatus = null;
-
         do {
             switch (status) {
                 case 1:
