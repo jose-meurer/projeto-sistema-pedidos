@@ -9,11 +9,11 @@ public enum OrderStatus {
     // Caso precise retornar algum valor numerico para o sistema
     private int valor;
 
-    OrderStatus(int valor){
+    OrderStatus(int valor) {
         this.valor = valor;
     }
 
-    public int getValor(){
+    public int getValor() {
         return valor;
     }
 }
